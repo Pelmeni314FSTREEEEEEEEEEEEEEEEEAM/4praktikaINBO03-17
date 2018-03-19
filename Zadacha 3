@@ -1,0 +1,37 @@
+#include "stdafx.h"
+#include <iostream>
+#include <ctime>
+#include <locale>
+using namespace std;
+
+void full_the_array(int **a,unsigned int b,unsigned int c)
+{
+	for (int i = 0; i < b; i++)
+	{
+		for (int k = 0; k < c; k++)
+		{
+			a[i][k] = rand() % 40 + 10;
+			printf("%i ", a[i][k]);
+		}
+		printf("\n");
+	}
+}
+
+int main()
+{
+	int **a;
+	unsigned int i,k,b,c;
+	setlocale(0, "");
+	srand(time(NULL));
+	printf("Введите кол-во строк b: ");
+	cin >> b;
+	printf("Введите кол-во столбцов c:");
+	cin >> c;
+	a = new int*[c];
+	for (k = 0; k < c; k++)
+		a[k] = new int[b];
+	full_the_array(a, b, c);
+	delete a;
+	system("pause");
+    return 0;
+}
