@@ -1,0 +1,28 @@
+#include "stdafx.h"
+#include <iostream>
+#include <locale>
+#include <ctime>
+using namespace std;
+
+
+int main()
+{
+	double *a;
+	unsigned int *b=new unsigned int, i;
+	setlocale(0, "");
+	srand(time(NULL));
+	cout << "Введите размер массива a: ";
+	cin >> *b;
+	a = new double[*b];
+	for (i = 0; i < *b; i++)
+		a[i] = (double)rand() * 100 / RAND_MAX;
+	for (i = 0; i < *b; i++)
+	{
+		printf("a[%i] = %.2f ",i, a[i]);
+		printf("\n");
+	}
+	delete a;
+	delete b;
+	system("pause");
+    return 0;
+}
