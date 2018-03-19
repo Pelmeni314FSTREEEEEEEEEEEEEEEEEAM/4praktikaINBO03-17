@@ -4,25 +4,44 @@
 #include <ctime>
 using namespace std;
 
+void assign_memory(double *a,unsigned int *b)
+{
+	a = new double[*b];
+}
+
+void full_the_array(double *a,unsigned int *b)
+{
+	for (int i = 0; i < *b; i++)
+		a[i] = (double)rand() * 100 / RAND_MAX;
+}
+
+void show(double *a, unsigned int *b)
+{
+	for (int i = 0; i < *b; i++)
+	{
+		printf("a[%i] = %.2f ", i, a[i]);
+		printf("\n");
+	}
+}
+
+void destroy(double *a)
+{
+	delete a;
+}
 
 int main()
 {
-	double *a;
-	unsigned int *b=new unsigned int, i;
+	double *a=new double;
+	unsigned int *b = new unsigned int, i;
 	setlocale(0, "");
 	srand(time(NULL));
 	cout << "Введите размер массива a: ";
 	cin >> *b;
-	a = new double[*b];
-	for (i = 0; i < *b; i++)
-		a[i] = (double)rand() * 100 / RAND_MAX;
-	for (i = 0; i < *b; i++)
-	{
-		printf("a[%i] = %.2f ",i, a[i]);
-		printf("\n");
-	}
-	delete a;
+	assign_memory(a, b);
+	full_the_array(a, b);
+	show(a, b);
+	destroy(a);
 	delete b;
 	system("pause");
-    return 0;
+	return 0;
 }
