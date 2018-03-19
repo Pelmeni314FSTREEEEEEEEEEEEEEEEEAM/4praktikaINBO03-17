@@ -1,0 +1,28 @@
+#include "stdafx.h"
+#include <iostream>
+#include <ctime>
+#include <locale>
+using namespace std;
+
+
+int main()
+{
+	int *a=new int[12];
+	unsigned int i;
+	setlocale(0, "");
+	srand(time(NULL));
+	printf("Массив целочисленных значений :\n");
+	for (i = 0; i < 12; i++)
+	{
+		a[i] = rand()%100;
+		printf("a[%i] = %i \n", i, a[i]);
+	}
+	printf("\nНовый массив: \n");
+	for (i = 0; i < 12; i += 2)
+		swap(a[i], a[i + 1]);
+	for (i=0;i<12;i++)
+		printf("a[%i] = %i \n", i, a[i]);
+	delete a;
+	system("pause");
+    return 0;
+}
